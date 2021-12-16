@@ -22,7 +22,7 @@ class BackController extends AbstractController
         if($id=null): //si l'id est null on instancie une catégorie, sinon on fait un findoneby $id
         $categorie = new Categorie;
         else:
-             $category = $repository->findOneBy($id);
+             $categorie = $repository->findOneBy($id);
         endif;
         $form = $this->createForm(CategorieType::class, $categorie);
         dump($request->request);
