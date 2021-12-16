@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+
+{{form_start(form)}}
+{# avec les form_start et form_end, on peut choisir quel champs on veut inserer#}
+<label for="">Nom du produit</label>
+{{form_row(form.title)}}
+<label for="">Prix</label>
+{{form_row(form.price)}}
+<label for="">Description</label>
+{{form_row(form.description)}}
+{{form_row(form.categorie)}}
+<label for="">Photo</label>
+
+
+{{form_row(form.updatePicture, {'attr': {"onChange":"loadFile(event)"} }) }} 
+
+<div class="row justify-content-between mb-4">
+	<div class="col-md-6 text-center">
+		<label for=""><h4>Photo actuelle</h4></label>
+		<img width="300" src="{{ asset('upload/') }}{{ produit.picture }}" alt="">
+	</div> 
+	<div class="col-md-6 text-center">
+		<label for=""><h4>Photo modifiée</h4></label>
+		<img id="image" width="300" alt="" >
+	</div> 
+</div>
+
+
+
+{{form_row(form.Valider)}}
+{{form_end(form)}}
+
+<script>
+	var loadFile = function (event){
+		var image = document.getElementById('image');
+		image.src = URL.createObjectURL(event.target.files[0]);
+	};
+</script>
+
+
+{% endblock %}
+{% block title %}
+	Modifier un Produit
+{% endblock %}

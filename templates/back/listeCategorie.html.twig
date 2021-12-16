@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Liste des Catégories
+{% endblock %}
+
+{% block body %}
+
+<a href="{{path('addCategorie')}}" class=btn "btn-success">Ajouter</a>
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Nom</th>
+			<th scope="col">Action</th>
+		</tr>
+	</thead>
+	<tbody>
+ 
+  {% for categorie in categories %}
+		<tr>
+			<th scope="row">{{categorie.id}}</th>
+			<td>{{categorie.nom}}</td>
+			<td>
+                <a onclick="confirm('Êtes-vous sur de vouloir supprimer cette catégorie ? ')"href="{{path('deleteCategorie',{'id': categorie.id})}}" class ="btn btn-danger">Supprimer</a>
+                <a onclick="confirm('Êtes-vous sur de vouloir modifier cette catégorie ? ')"href="{{path('updateCategorie',{'id': categorie.id})}}" class ="btn btn-primary">Modifier</a>
+            </td>
+		</tr>
+    {% endfor %}
+  
+	</tbody>
+</table>
+
+
+
+{% endblock %}
+

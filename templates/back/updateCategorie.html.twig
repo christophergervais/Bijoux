@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Modifier une Catégorie
+{% endblock %}
+
+{% block body %}
+
+
+	{{form_start(form)}}
+	{# avec les form_start et form_end, on peut choisir quel champs on veut inserer#}
+	<label for="">Nom de la catégorie</label>
+	{{form_row(form.nom)}}
+	{{form_row(form.Valider)}}
+	{{form_end(form)}}
+
+
+{% endblock %}
+

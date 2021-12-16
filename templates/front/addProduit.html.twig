@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Ajouter un Produit
+{% endblock %}
+
+{% block body %}
+
+
+
+{{form_start(form)}} {# avec les form_start et form_end, on peut choisir quel champs on veut inserer#}
+    <label for="">Nom du produit</label>
+    {{form_row(form.title)}}
+    <label for="">Prix</label>
+    {{form_row(form.price)}}
+    <label for="">Description</label>
+    {{form_row(form.description)}}
+    {{form_row(form.categorie)}}
+    <label for="">Photo</label>
+{{form_row(form.picture, {'attr': {"onChange":"loadfile(event)"} }) }}
+
+<div classe="col-md-12 text center">
+	<img id="image" style="width:300px"> 
+</div>
+
+    {{form_row(form.Valider)}}
+{{form_end(form)}}
+
+<script>
+	var loadFile = function (event) {
+var image = document.getElementById('image');
+image.src = URL.createObjectURL(event.target.files[0]);
+};
+</script>
+
+
+
+{% endblock %}
+
